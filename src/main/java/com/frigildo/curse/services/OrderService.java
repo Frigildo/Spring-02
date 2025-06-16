@@ -1,0 +1,27 @@
+package com.frigildo.curse.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.frigildo.curse.entitys.Order;
+import com.frigildo.curse.repository.OrderRepository;
+
+@Service
+public class OrderService {
+
+	@Autowired
+	private OrderRepository repository;
+
+	public List<Order> findAll() {
+		List<Order> list = repository.findAll();
+		return list;
+	}
+
+	public Order findById(Long id) {
+		Optional<Order> obj = repository.findById(id);
+		return obj.get();
+	}
+}
